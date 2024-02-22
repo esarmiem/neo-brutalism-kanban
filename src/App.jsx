@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 import { FiPlus, FiTrash } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { FaFire } from "react-icons/fa";
 
 export const CustomKanban = () => {
   return (
-    <div className="h-screen w-full bg-neutral-900 text-neutral-50">
+    <div className="h-screen w-full bg-neutral-900 text-neutral-50 font-mono">
       <Board />
     </div>
   );
@@ -16,36 +16,41 @@ const Board = () => {
   const [cards, setCards] = useState(DEFAULT_CARDS);
 
   return (
-    <div className="flex h-full w-full gap-3 overflow-scroll p-12">
-      <Column
-        title="Backlog"
-        column="backlog"
-        headingColor="text-neutral-500"
-        cards={cards}
-        setCards={setCards}
-      />
-      <Column
-        title="TODO"
-        column="todo"
-        headingColor="text-yellow-200"
-        cards={cards}
-        setCards={setCards}
-      />
-      <Column
-        title="In progress"
-        column="doing"
-        headingColor="text-blue-200"
-        cards={cards}
-        setCards={setCards}
-      />
-      <Column
-        title="Complete"
-        column="done"
-        headingColor="text-emerald-200"
-        cards={cards}
-        setCards={setCards}
-      />
-      <BurnBarrel setCards={setCards} />
+    <div className="flex flex-col h-full w-full overflow-scroll pl-12 pr-12 pb-12 pt-4">
+      <h1 className="text-2xl font-bold pb-8 text-center font-mono bg-gradient-to-r from-blue-500 to-green-500 bg-clip-text text-transparent sm:text-2xl md:text-2xl lg:text-2xl xl:text-4xl 2xl:text-5xl 3xl:text-6xl">
+        Alaska Tech Kanban
+      </h1>
+      <div className="flex h-full w-full gap-3 ">
+        <Column
+          title="Backlog"
+          column="backlog"
+          headingColor="text-neutral-500"
+          cards={cards}
+          setCards={setCards}
+        />
+        <Column
+          title="TODO"
+          column="todo"
+          headingColor="text-yellow-200"
+          cards={cards}
+          setCards={setCards}
+        />
+        <Column
+          title="In progress"
+          column="doing"
+          headingColor="text-blue-200"
+          cards={cards}
+          setCards={setCards}
+        />
+        <Column
+          title="Complete"
+          column="done"
+          headingColor="text-emerald-200"
+          cards={cards}
+          setCards={setCards}
+        />
+        <BurnBarrel setCards={setCards} />
+      </div>
     </div>
   );
 };
@@ -331,4 +336,4 @@ const DEFAULT_CARDS = [
   },
 ];
 
-export default CustomKanban
+export default CustomKanban;
